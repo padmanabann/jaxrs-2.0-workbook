@@ -1,5 +1,7 @@
 package com.restfully.shop.services;
 
+import java.util.List;
+
 import javax.ws.rs.GET;
 import javax.ws.rs.MatrixParam;
 import javax.ws.rs.Path;
@@ -8,7 +10,6 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.PathSegment;
 import javax.ws.rs.core.UriInfo;
-import java.util.List;
 
 /**
  * @author <a href="mailto:bill@burkecentral.com">Bill Burke</a>
@@ -24,7 +25,9 @@ public class CarResource
       blue,
       black
    }
-
+   
+   //http://127.0.0.1:8025/jaxrs-2.0-workbook-ex05_1/services/cars/matrix/mercedes/e55;color=black/2006
+   //A black 2006 mercedes e55
    @GET
    @Path("/matrix/{make}/{model}/{year}")
    @Produces("text/plain")
@@ -36,7 +39,8 @@ public class CarResource
       return "A " + color + " " + year + " " + make + " " + car.getPath();
    }
 
-
+   //http://127.0.0.1:8025/jaxrs-2.0-workbook-ex05_1/services/cars/segment/mercedes/e55;color=black/2006
+   //A black 2006 mercedes e55
    @GET
    @Path("/segment/{make}/{model}/{year}")
    @Produces("text/plain")
@@ -47,7 +51,9 @@ public class CarResource
       String carColor = car.getMatrixParameters().getFirst("color");
       return "A " + carColor + " " + year + " " + make + " " + car.getPath();
    }
-
+   
+   //http://127.0.0.1:8025/jaxrs-2.0-workbook-ex05_1/services/cars/segments/mercedes/e55/amg/year/2006
+   //A 2006 mercedes e55 amg
    @GET
    @Path("/segments/{make}/{model : .+}/year/{year}")
    @Produces("text/plain")
@@ -62,7 +68,8 @@ public class CarResource
       }
       return output;
    }
-
+   //http://127.0.0.1:8025/jaxrs-2.0-workbook-ex05_1/services/cars/uriinfo/mercedes/e55;color=black/2006
+   //A black 2006 mercedes e55
    @GET
    @Path("/uriinfo/{make}/{model}/{year}")
    @Produces("text/plain")

@@ -72,7 +72,29 @@ public class CustomerResource
       customer.setCountry("USA");
       customerDB.put(id++, customer);
    }
-
+   //http://127.0.0.1:8025/jaxrs-2.0-workbook-ex05_1/services/customers
+   /* 
+	 <customers>
+		<customer id="1">
+			<first-name>Bill</first-name>
+			<last-name>Burke</last-name>
+			<street>263 Clarendon Street</street>
+			<city>Boston</city>
+			<state>MA</state>
+			<zip>02115</zip>
+			<country>USA</country>
+		</customer>
+		<customer id="2">
+			<first-name>Joe</first-name>
+			<last-name>Burke</last-name>
+			<street>263 Clarendon Street</street>
+			<city>Boston</city>
+			<state>MA</state>
+			<zip>02115</zip>
+			<country>USA</country>
+		</customer>
+	</customers>   
+    * */
    @GET
    @Produces("application/xml")
    public StreamingOutput getCustomers(final @QueryParam("start") int start,
@@ -97,7 +119,32 @@ public class CustomerResource
          }
       };
    }
-
+   
+   //http://127.0.0.1:8025/jaxrs-2.0-workbook-ex05_1/services/customers/uriinfo
+   /*
+    <customers>
+		<customer id="1">
+			<first-name>Bill</first-name>
+			<last-name>Burke</last-name>
+			<street>263 Clarendon Street</street>
+			<city>Boston</city>
+			<state>MA</state>
+			<zip>02115</zip>
+			<country>USA</country>
+		</customer>
+		<customer id="2">
+			<first-name>Joe</first-name>
+			<last-name>Burke</last-name>
+			<street>263 Clarendon Street</street>
+			<city>Boston</city>
+			<state>MA</state>
+			<zip>02115</zip>
+			<country>USA</country>
+		</customer>
+	</customers>
+    
+    *  */
+   
    @GET
    @Produces("application/xml")
    @Path("uriinfo")
